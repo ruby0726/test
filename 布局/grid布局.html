@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <div class="header">hhhhh</div>
+  <div class="container">
+    <div class="item">dddd</div>
+    <div class="item">ddd</div>
+    <div class="item">dddd</div>
+    <div class="item">ddd</div>
+    <div class="item">dddd</div>
+    <div class="item">ddd</div>
+    <div class="item">dddd</div>
+    <div class="item">ddd</div>
+    <div class="item">dddd</div>
+    <div class="item">ddd</div>
+  </div>
+</html>
+<style>
+  body {
+    margin: 0 !important;
+  }
+  .header,.container {
+    width: 70%;
+    margin: 0;
+    overflow: scroll;
+  }
+  .header {
+    background-color: red;
+    resize: both;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%; 
+    grid-template-rows: autoautoauto;
+    /* gap: 50px; */
+
+  }
+  .item {
+    background-color: blue;
+  }
+</style>

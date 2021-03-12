@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <div>
+    <!-- 动手实现一个repeat方法    function repeat(func,times,wait) {}    const repeatFunc = repeat(alert,4,3000)   
+    调用repeatFunc('helloworld'),会alert4次helloworld 每隔3秒打印一次 -->
+
+
+  </div>
+</html>
+<script>
+  function repeat(func,tims,wait) {
+    let interval, t = 1;
+    return function () {
+      let context = this;
+      let arg = arguments;
+      if(!interval) {
+        interval = setInterval(function() {
+          if(t>times) {
+            window.clearInterval(interval)
+          } else {
+            func.apply(context,arg)
+            t++
+          }
+        },wait)
+      }
+    }
+  }
+  const repeatFunc = repeat(alert, 4, 1000)
+  repeatFunc('helloworld')
+</script>

@@ -1,0 +1,22 @@
+babel编译方式：
+一、在线
+1、引入browser
+2、type = "text/babel"
+
+二、配置一个babel编译环境
+1、安装node
+2、安装babel
+npm i @babel/core @babel/cli @babel/preset-env
+//   如果没有这个东西，则只能兼容到ie7，这个东西可以帮助你兼容更低版本
+//   通过 Polyfill 方式在目标环境中添加缺失的特性 (通过 @babel/polyfill 模块)
+npm i @babel/polyfill
+3、添加脚本
+"build":"babel src -d dest"
+4、添加配置文件
+{
+  "preset":{
+    "@babel/preset-env"
+  }
+}
+5、执行
+npm run build

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      // 使用async/await实现
+      async function liangEach(arr,cb) {
+        for(let i=0;i<arr.length;i++) {
+          await cb(arr[i])
+        }
+      }
+      const arr = [1,2,5]
+      liangEach(arr,(n)=>{
+        return new Promise((resolve)=> {
+          setTimeout(()=>{
+            console.log(n)
+            resolve()
+          },1000)
+        })
+      })
+    </script>
+  </body>
+</html>

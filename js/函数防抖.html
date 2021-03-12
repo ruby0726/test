@@ -1,0 +1,49 @@
+<html>
+  <div id="div">
+    1111
+  </div>
+</html>
+<script>
+  // 最简单的防抖代码（在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则清除掉上次的，重新计时）
+  var timer; // 维护同一个timer
+  // 防抖函数
+  function debounce(fn,delay) {
+    clearTimeout(timer);
+    timer = setTimeout(()=>{
+      fn()
+    },delay)
+  }
+
+  //test
+  function testDebounce() {
+    console.log('test')
+  }
+  document.getElementById('div').onmouseover = () =>{
+    debounce(testDebounce,1000)
+  }
+
+  // 在上面的代码中，会出现一个问题，var timer只能在setTimeout的父级作用域中，这样才是同一个timer，并且为了方便防抖函数的调用和回调函数fn的传参问题，我们应该用闭包来解决这些问题
+
+  // 优化后的代码
+
+  // function debounce(fn, delay) {
+  //     var timer; // 维护一个 timer
+  //     return function () {
+  //       var _this = this; // 取debounce执行作用域的this
+  //       var args = arguments;
+  //       if (timer) {
+  //         clearTimeout(timer);
+  //       }
+  //       timer = setTimeout(function () {
+  //         fn.apply(_this, args); // 用apply指向调用debounce的对象，相当于_this.fn(args);
+  //       }, delay);
+  //     };
+  //   }
+</script>
+<style>
+  #div{
+    width:100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>

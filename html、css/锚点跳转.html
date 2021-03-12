@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <button onclick="redictToOne()">点击跳转到第一个div</button>
+    <button onclick="redictToTwo()">点击跳转到第二个div</button>
+    <div id="one"></div>
+    <button onclick="redictToTwo()">点击跳转到第二个div</button>
+    <div id="two"></div>
+    <button onclick="redictToOne()">点击跳转到第一个div</button>
+  </body>
+</html>
+<script type="text/javascript">
+  function redictToOne(){
+    //如果滚动页面也是DOM没有解决的一个问题。为了解决这个问题，浏览器实现了一下方法，  
+    //以方便开发人员如何更好的控制页面的滚动。在各种专有方法中，HTML5选择了scrollIntoView()  作为标准方法。  
+    document.querySelector("#one").scrollIntoView(true);
+  }
+  function redictToTwo() {
+      //如果滚动页面也是DOM没有解决的一个问题。为了解决这个问题，浏览器实现了一下方法，  
+      //以方便开发人员如何更好的控制页面的滚动。在各种专有方法中，HTML5选择了scrollIntoView()  作为标准方法。  
+      document.querySelector("#two").scrollIntoView(true);
+    }
+</script>
+<style>
+  #one {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    margin-top: 900px;
+  }
+  #two {
+    width: 200px;
+    height: 400px;
+    background-color: yellow;
+    margin-top: 500px;
+  }
+</style>

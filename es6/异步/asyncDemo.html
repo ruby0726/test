@@ -1,0 +1,19 @@
+<html></html>
+<script>
+  function timeout(ms) {
+      return new Promise((resolve) => {
+        setTimeout(resolve('111'), ms);
+      });
+    }
+
+    async function asyncPrint(value, ms) {
+      let data = await timeout(ms);
+      console.log(data)
+      console.log(value);
+      return ms  // 如果没有显式返回就默认返回promise
+    }
+
+    asyncPrint('hello world', 50).then(res => {
+      console.log(res)
+    })
+</script>

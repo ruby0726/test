@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  var fn = (function() {
+    var cache = {}; // 缓存对象
+    var calc = function(arr) { // 计算函数
+      var sum = 0;
+      // 求和
+      for(var i = 0; i<arr.length; i++) {
+        sum += arr[i]
+      }
+      return sum
+    }
+
+    return function() {
+      var args = Array.prototype.slice.call(arguments, 0) // arguments转换成数组
+      var key = args.join(",")
+      var result,tSum = cache[key]
+      if(tSum) { // 如果缓存有
+        console.log('从缓存中取',cache)
+        retsult = tSum
+      } else {
+        // 重新计算，并存入缓存同时赋值给result
+        result = cache[key] = calc(args)
+        console.log('存入缓存',cache)
+      }
+      return result
+    }
+  })()
+
+  fn(1, 2, 3, 4, 5);
+  fn(1, 2, 3, 4, 5);
+  fn(1, 2, 3, 4, 5, 6);
+  fn(1, 2, 3, 4, 5, 8);
+  fn(1, 2, 3, 4, 5, 6);
+</script>

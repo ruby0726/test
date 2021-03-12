@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8" name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>flex</title>
+    <script>
+        var width = document.documentElement.clientWidth
+        console.log(width)
+        document.documentElement.style.fontSize = document.documentElement.clientWidth/7.5+'px'
+    </script>
+
+    <style>
+        .flex-box{
+            width: 500px;
+            margin: 0px auto;
+            font-size: 12px;
+        }
+        .flex-box .list{
+            padding: 10px;
+            display: flex;
+        }
+        .flex-box .pic{
+            height: 90px;
+            width: 90px;
+        }
+        .flex-box .pic img{
+            height: 90px;
+            width: 90px;
+        }
+        .flex-box .text{
+            padding-left: 10px;
+            height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .flex-box .text .title{
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .flex-box .text .time{
+            font-size: 12px;
+        }
+        .sub-tag{
+            display: flex;
+        }
+        .sub-tag .tag-list{
+            border: 1px solid #ddd;
+            padding: 3px 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-box">
+        <div class="list">
+            <div class="pic">
+                <img src="https://www.xfei.me/uploads/2020/03/100951549730.png" alt="">
+            </div>
+            <div class="text">
+                <div class="title">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</div>
+                <div class="time">2019-02-04</div>
+                <div class="sub-tag">
+                    <div class="tag-list">标签11</div>
+                    <div class="tag-list">标签12</div>
+                    <div class="tag-list">标签13</div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="pic">
+                <img src="https://www.xfei.me/uploads/2020/03/100951549730.png" alt="">
+            </div>
+            <div class="text">
+                <div class="title">这里是标题这里是</div>
+                <div class="time">2019-02-04</div>
+                <div class="sub-tag">
+                    <div class="tag-list">标签11</div>
+                    <div class="tag-list">标签12</div>
+                    <div class="tag-list">标签13</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

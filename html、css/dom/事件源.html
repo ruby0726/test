@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <div>
+    <div onclick="buttonClick(event)">
+      <button >
+        Click!
+      </button>
+    </div>
+  </div>
+</html>
+<script>
+  function buttonClick(event) {
+    console.log(event.target) //指的是真正触发事件的那个元素
+    console.log(event.currentTarget)  //指的是绑定了事件监听的元素
+  }
+</script>

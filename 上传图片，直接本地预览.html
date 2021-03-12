@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <input id="upload" type="file" onchange="localShowImage()">
+    <img id="preview" src="">
+  </div>
+  <script type="text/javascript">
+    // 得到浏览器版本
+    function getOs() {
+      if (navigator.userAgent.indexOf("MSIE") > 0) {
+        return "MSIE";
+      }
+      if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
+        return "Firefox";
+      }
+      if (isSafari = navigator.userAgent.indexOf("Safari") > 0) {
+        return "Safari";
+      }
+      if (isCamino = navigator.userAgent.indexOf("Camino") > 0) {
+        return "Camino";
+      }
+      if (isMozilla = navigator.userAgent.indexOf("Gecko/") > 0) {
+        return "Gecko";
+      }
+    }
+
+    function localShowImage() {
+      // ie浏览器获取图片路径
+      this.getImgUrlByMSIE = function(fileid) {
+        return document.getElementById(fileid).value
+      }
+      // 非IE浏览器获取图片路径
+      this.getImgUrlByUnMSIE = function (fileid) {
+        var f = document.getElementById(fileid).files[0];
+        return window.URL.createObjectURL(f);
+      }
+      var imgsrc = "";
+      var fid = "upload";
+      if ("MSIE" == getOs()) {
+        imgsrc = this.getImgUrlByMSIE(fid);
+      } else {
+        imgsrc = this.getImgUrlByUnMSIE(fid);
+      }
+      console.log(imgsrc)
+
+      document.getElementById('preview').src = imgsrc;
+
+    }
+  </script>
+</body>
+</html>

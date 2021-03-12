@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="btnDiv">
+      <button class="openPopUpBtn" id="openBtn">弹窗</button>
+    </div>
+
+    <div class="popUp">
+      <p>我是弹窗内容</p>
+      <button class="closePopUpBtn" id="closeBtn">关闭</button>
+    </div>
+  </body>
+
+</html>
+<style>
+  .btnDiv {
+    text-align: center;
+  }
+
+  .openPopUpBtn,
+  .closePopUpBtn {
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #c9c9c9;
+    background-color: #fff;
+    box-shadow: 1px 1px 1px 1px #eee;
+  }
+
+  .openPopUpBtn {
+    margin-top: 50px;
+  }
+
+  .openPopUpBtn:hover,
+  .closePopUpBtn:hover {
+    background-color: #eee;
+    cursor: pointer;
+  }
+
+  .popUp {
+    width: 600px;
+    height: 500px;
+    text-align: center;
+    background-color: #FFFeee;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px 1px #eee;
+    position: absolute;
+    left: 50%;
+    margin-left: -300px;
+    opacity: 0;
+    /* 透明度为0 */
+  }
+
+  .closePopUpBtn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  /*定义打开弹窗动画*/
+  #showCont{
+    animation: showPopUp 1s;
+    animation-fill-mode: forwards; /*保持动画后的状态*/
+  }
+
+  /*定义关闭弹窗动画*/
+  #hiddenCont{
+    animation: hiddenPopUp 1s;
+    animation-fill-mode: forwards;
+  }
+
+  /* 打开弹窗动画 */
+  @keyframes showPopUp {
+    0% {
+      opacity: 0;
+      top: -60%;
+      transform: rotateZ(0deg);
+    }
+
+    50% {
+      transform: rotateZ(-10deg);
+    }
+
+    100% {
+      opacity: 1;
+      top: 20%;
+      transform: rotateZ(0deg);
+    }
+  }
+
+  /* 关闭弹窗动画 和打开动画相反即可 */
+  @keyframes hiddenPopUp {
+    0% {
+      opacity: 1;
+      top: 20%;
+      transform: rotateZ(0deg);
+    }
+
+    50% {
+      transform: rotateZ(-10deg);
+    }
+
+    100% {
+      opacity: 0;
+      top: -60%;
+      transform: rotateZ(0deg);
+    }
+  }
+</style>
+<script>
+  window.onload = function () {
+      var popUp = document.getElementsByClassName('popUp'); //获取div.popUp的DOM节点,注意！popUp此时是一个数组
+      var openBtn = document.getElementById('openBtn');     //获取点击按钮的DOM节点
+      var closeBtn = document.getElementById('closeBtn');   //获取弹框里面关闭按钮的DOM节点
+
+      //点击弹窗按钮触发事件
+      openBtn.onclick = function () {
+        //给div.popUp添加一个名叫showCont的id,随后该id执行对应动画
+        popUp[0].setAttribute('id', 'showCont');
+      }
+
+      //点击关闭按钮触发事件
+      closeBtn.onclick = function () {
+        //给div.popUp添加一个名叫hiddenCont的id,随后该id执行对应动画   
+        popUp[0].setAttribute('id', 'hiddenCont');
+      }
+
+    }
+</script>

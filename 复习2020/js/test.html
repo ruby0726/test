@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button id="testButton">点击我</button>
+  </body>
+  <script>
+
+    window.onload = function () {
+      const testButton = document.getElementById('testButton')
+      testButton.addEventListener('click',onTest())
+    }
+    
+    function onTest() {
+      console.log('外层')
+      return function() {
+        console.log('内层')
+      }
+    }
+  </script>
+  
+</html>

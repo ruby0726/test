@@ -1,0 +1,22 @@
+<html>
+  <body></body>
+</html>
+<script>
+  //promise.race 只要包裹的promise对象中有一个的状态发生了改变，那么组成的这个新的promise对象的状态就是航母那个率先改变的额promise实例的状态
+  let arr = [1, 2, 3].map(
+      (value) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(value)
+          }, value * 1000)
+        })
+      }
+    )
+    console.log(arr)
+
+    let promises = Promise.race(arr).then((result) => {
+      console.log(result); //3s后输出结果  (输出1，是最先改变状态的那个promise实例resolve值)
+    }).catch((err) => {
+      console.log(err)
+    })
+</script>

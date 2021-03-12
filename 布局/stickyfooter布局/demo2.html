@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- flex布局方式 -->
+<html>
+<div class="wrapper clearfix">
+  <div class="content">
+    页面内容
+  </div>
+  <div class="footer">
+    这里是footer内容
+  </div>
+</div>
+</html>
+<style>
+  .wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    flex: 1
+  }
+  .footer {
+    flex: 0
+  }
+</style>

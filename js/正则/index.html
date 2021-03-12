@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script>
+      /**
+      编写正则：
+      js风格： new RegExp()
+      perl风格： /\d+/
+      */
+      let str = 'cdAbcefd  ada'
+
+      // let re = new RegExp('a')
+      // i ignore忽略大小写
+      // g global  全局匹配
+      // m 多行模式   
+      // 单行模式（默认）    ^$指的是整个字符串的开头和结尾，不会识别字符串里面的换行
+      // 多行模式（m）     ^$指的是每一行的开头和结尾，识别字符串中的\n
+      let re = /a/i
+      // search  类似于indexOf   返回字符串所在的位置
+
+
+      // 转义  
+      //   \d  digit   数字
+      console.log(str.search(re))
+
+
+      // 量词  不加默认一个
+      /**
+      {n}
+      {n,m}
+      {n,}
+      {0,m}
+
+      + {1,}
+      * {0,}
+      ? {0,1}
+      */
+
+      // replace
+      let str2 = str.replace(/a/ig,'!')
+      console.log(str2)
+
+
+      /** 元字符
+      1、或
+      /a[abc]s/   aas  abs  acs    
+      /a[abc]+s/  abbs
+      2、范围
+      [a-z]
+      [0-9]
+      [a-z0-9]
+      3、排除
+      [^abc]
+      [^0-9]
+      */
+      
+    </script>
+  </head>
+</html>

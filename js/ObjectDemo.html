@@ -1,0 +1,20 @@
+<script>
+  var user = {
+      name: 'lilu'
+    }
+    var count = 12;
+    Object.defineProperty(user, 'age', {
+      get: function () {
+        console.log('取值')
+        return count;
+      },
+      set: function (newVal) {
+        console.log('设置值')
+        count = newVal + 1;
+      },
+      // writable: true     //当使用了getter或setter方法，不允许使用writable和value这两个属性(如果使用，会直接报错滴)
+    })
+    console.log(user.age);
+    user.age = 145;
+    console.log(user.age);
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function CreatePerson(name,age,sex) {
+      var obj = new Object()
+      obj.name = name
+      obj.age = age
+      obj.sex = sex
+      obj.sayName = function () {
+        return this.name
+      }
+      return obj
+    }
+    var p1 = new CreatePerson("longen", '28', '男');
+    var p2 = new CreatePerson("tugenhua", '27', '女');
+
+    // 复杂的工厂模式定义是：将其成员对象的实例化推迟到子类中，子类可以重用父类接口方法以便创建的时候指定自己的对象类型
+
+    // 定义自行车的构造函数
+    var BicycleShop = function(name) {
+      this.name = name
+      this.method = function() {
+        return this.name
+      }
+    }
+    BicycleShop.prototype =  {
+      constructor: BicycleShop,
+      /*
+        * 买自行车这个方法
+        * @param {model} 自行车型号
+        */
+      sellBicycle: function(model) {
+        var bicycle = this.createBicycle(model)
+        // 执行A业务逻辑
+        bicycle.A();
+
+        // 执行B业务逻辑
+        bicycle.B();
+        return bicycle;
+      },
+      createBicycle: function (model) {
+        throw new Error("父类是抽象类不能直接调用，需要子类重写该方法");
+      }
+    }
+  </script>
+</body>
+</html>

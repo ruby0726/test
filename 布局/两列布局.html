@@ -1,0 +1,46 @@
+<!--先写侧边栏再写主内容-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="parent">
+			<div class="left">
+				<p>left</p>
+			</div>
+			<div class="right">
+				<p>right</p>
+				<p>riight</p>
+			</div>
+		</div>
+	</body>
+	<style>
+		/*浮动布局*/
+		/*.parent {
+			overflow: hidden;
+			zoom:1;
+		}
+		.left {
+			float: left;
+			margin-right:20px;
+		}
+		.right {
+			overflow: hidden;
+			zoom: 1;
+		}*/
+		
+		/*flex布局*/
+		.parent {
+			display: flex;
+		}
+		.right {
+			margin-left: 20px;
+			flex: 1;
+		}
+		
+		
+	</style>
+</html>

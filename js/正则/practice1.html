@@ -1,0 +1,82 @@
+<script>
+
+  // 获取字符串内[](含)内的数据  （使用字符串方法 match）
+  var str = '今天学习了[RegExp]对象';
+  var reg = /\[[A-z]{0,}\]/
+  console.log(str.match(reg)[0])
+
+  // 判断字符串是否存在英文以外的字符  （使用正则方法 test ）
+  var str1 = 'StackOverflow';
+  var str2 = '我在TrendyTech上班';
+  var reg1 = /[^A-z]/
+  console.log(reg1.test(str1))
+  console.log(reg1.test(str2))
+
+  // 判断字符串是否为xxxx-xx-xx格式的日期  （使用正则方法 test ）
+  var str3 = '2020-01-12';
+  var str4 = '2020年1月1日';
+  // var reg2 = /^\d{4}\-\d{2}\-\d{2}$/
+  var reg2 = /^([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[01])$/
+  console.log(reg2.test(str3))
+  console.log(reg2.test(str4))
+
+  //从字符串中获取日期    （使用字符串方法 match ）
+  var str5 = '今天是2020-01-12，马上就放假了';
+  var reg3 = /([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[01])/
+  console.log(str5.match(reg3)[0])
+
+  //中文字符的编码范围4E00-9FA5  （使用字符串方法 test ）
+  var str6 = '哈哈哈哈'
+  var reg4 = /[\u4E00-\u9FA5]{2,12}/
+  console.log(reg4.test(str6))
+
+  /*
+    g 是 global全局匹配，默认情况下是非全局匹配，匹配到一个就结束，全局匹配是匹配所有数据。还有两个修饰符分别是 i m
+    i 是 ignoreCase 忽略大小写的意思很好理解
+    m 是 multiline 多行匹配，比如 /^a/ 只匹配第一行开头是否为 a ，而加了m ，就是每一行开头都匹配
+  */
+  // 替换   （使用字符串方法 replace ）
+  var ignoreCaseStr = '[a-z]和[A-Z]是不同的';
+  var multilineStr = `a同学大了b同学，b同学不满a同学打了他，就还手打了
+a同学`;
+  var ignoreCaseReg = /[A-Z]/gi
+  var multilineReg = /^a/gm
+  console.log(ignoreCaseStr.replace(ignoreCaseReg,'x'))
+  // => [x-x]和[x-x]是不同的
+  console.log(multilineStr.replace(multilineReg,'A'))
+  // => A同学大了b同学，b同学不满a同学打了他，就还手打了
+  // => A同学
+
+  // (?=pattern) 零宽度 正预测先行 断言
+  // 举例：查找15岁的小伙伴
+  var str7 = '小明17岁，小刚15岁，小红16岁，小茗15岁'
+  var reg5 = /[u4E00-\u9FA5]{2}(?=15岁)/g
+  console.log(str7.match(reg5))  // => ["小刚", "小茗"]
+
+  // (?<=pattern) 零宽度 正回顾后发 断言（也叫反向肯定预查）
+  // 举例：查找小茗多少岁
+  var reg6 = /(?<=小茗)\d{2}/g
+  console.log(str7.match(reg6))
+
+  // (?<=pattern) 和 (?=pattern) 同时使用就可以查某某区间的值
+  var str8 = '<div>我是div里的内容</div><div>我是第二个div的内容</div>';
+  var reg7 = /(?<=<(div)>).*(?=<\/\1>)/
+  var reg8 = /(?<=<(div)>).*?(?=<\/\1>)/
+  console.log(str8.match(reg7)[0]); // => 我是div里的内容</div><div>我是第二个div的内容
+  console.log(str8.match(reg8)[0]); // => 我是div里的内容
+
+  // (?!pattern) 零宽度 负预测先行 断言（也叫正向否定预查）
+  // 举例：查找不是 15岁 的小伙伴
+  var str9 = '小明17岁，小刚15岁，小红16岁，小茗15岁';
+  var reg9 = /[\u4E00-\u9FA5]{2}(?!15岁)/g;
+  console.log(str9.match(reg9)); // =>  ["小明", "小红"]
+
+  // (?<!pattern) 零宽度 负回顾后发 断言（也叫反向否定预查）
+  // 举例：查找 小红以外 的小伙伴年龄
+  var str10 = '小明17岁，小刚15岁，小红16岁，小茗15岁';
+  var reg10 = /(?<!小红)\d{2}/g
+  console.log(str10.match(reg10)); // =>  ["17", "15", "15"]
+
+
+
+</script>

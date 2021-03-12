@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+</html>
+<script>
+  // 编程实务中，如果读取对象内部的某个属性，往往需要判断一下该对象是否存在。比如，要读取message.body.user.firstName，
+
+  // 之前的写法，需要判断四次
+  const firstName = (message
+      && message.body
+      && message.body.user
+      && message.body.user.firstName) || 'default';
+
+  // ES2020引入
+  //上面代码使用了?.运算符，直接在链式调用的时候判断，左侧的对象是否为null或undefined。如果是的，就不再往下运算，而是返回undefined
+  const firstName = message?.body?.user?.firstName || 'default'
+
+  //下面是判断对象方法是否存在，如果存在就立即执行的例子。
+  iterator.return?.()
+  //上面代码中，iterator.return如果有定义，就会调用该方法，否则iterator.return直接返回undefined，不再执行?.后面的部分。
+
+  //对于那些可能没有实现的方法，这个运算符尤其有用。
+  if(myForm.chechValidity?.() === false) {
+    // 表单校验失败
+    return
+  }
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="progress_box">
+      <div class="progress_item">
+        <div>急急急急急急</div>
+        <div>急急急急急急</div>
+        <div>急急急急急急</div>
+        <div>急急急急急急</div>
+        <div>急急急急急急</div>
+      </div>
+      <div class="progress_item">急急急急急急</div>
+      <div class="progress_item">急急急急急急</div>
+      <div class="progress_item">急急急急急急</div>
+    </div>
+  </body>
+</html>
+<style>
+  .progress_item {
+    padding-left: 20px;
+    vertical-align: start;
+    position: relative;
+  }
+  .progress_item::before {
+    content: '';
+    width:  10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    position: absolute;
+    top: 6px;
+    left: -5px;
+  }
+  .progress_item::after {
+    content: '';
+    width: 1px;
+    height: 90%;
+    border-left: 1px solid gray;
+    box-sizing: border-box;
+    position: absolute;
+    top: 16px;
+    left: 0;
+  }
+
+  .progress_item:first-child::before{
+    background-color: blue;
+  }
+
+  .progress_item:last-child::after{
+    display: none;
+  }
+</style>

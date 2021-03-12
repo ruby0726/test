@@ -1,0 +1,20 @@
+<html>
+  <head></head>
+  <body>
+    <div>111</div>
+  </body>
+</html>
+<script>
+  var fun_1 = function(a){
+    this.a = a
+    console.log("我是普通函数")
+  }
+  var fun_2 = ((b)=> {
+    this.b = b
+    console.log("我是箭头函数")
+  })
+  console.dir(fun_1);
+  console.log(fun_1.prototype)  // Object
+  console.dir(fun_2);
+  console.log(fun_2.prototype)  // undefined
+</script>

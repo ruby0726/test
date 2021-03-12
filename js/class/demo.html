@@ -1,0 +1,38 @@
+<html>
+  <div>es6--class</div>
+</html>
+<script>
+  // es5写法
+  // function Point(x,y) {
+  //   this.x = x;
+  //   this.y = y;
+  // }
+  // Point.prototype.toString = function() {
+  //   return '(' + this.x + ', ' + this.y + ')'
+  // }
+  // var p = new Point(1,2)
+
+  // es6   class可以看作是一个语法糖
+  // 改写上面的方法
+  class Point {
+    // 构造方法
+    constructor(x,y) {
+      this.x = x;
+      this.y = y;
+    }
+    toString() {
+      return '(' + this.x + ', ' + this.y + ')'
+    }
+  }
+  console.log(typeof Point)  // function
+  Point === Point.prototype.constructor // true
+  // 类的数据类型就是函数，类本身就是指向构造函数
+
+
+  // 构造函数的prorotype属性，在es6的“类”上继续存在，事实上：类的所有方法都是定义在类的protorype属性上
+
+  // prototype对象的constructor属性，直接指向“类”的本身
+  Point.prototype.constructor = Point
+
+  // 类的内部定义的方法都是不可枚举的
+</script>

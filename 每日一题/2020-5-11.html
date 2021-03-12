@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script>
+      var yidenga = Function.length,
+      yidengb = new Function().length
+      console.log(yidenga === yidengb)  //false
+      // 请写出答案并描述原因
+
+
+
+
+
+
+
+
+
+
+
+
+      // 原因：
+      /**
+      length是函数对象的一个属性值，指该函数有多少个必须要传的入的参数，即形参的个数。
+      形参数量不包括剩余参数哥数，仅包括第一个具有默认值之前的参数个数
+      Function构造器本身也是一个Function。他的length属性值为1。该属性Writable:false,Enumerable:false。Configurable:true  
+      Function原型对象的length属性值为0
+      */
+    </script>
+  </head>
+</html>

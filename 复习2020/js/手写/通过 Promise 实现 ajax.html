@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    const getData = (url) => {
+      return new Promise((resolve,reject)=> {
+        // 设置XMLHttpRequest请求
+        const xhr = new XMLHttpRequest()
+
+        // 设置请求方法和url
+        xhr.open('GEt',url)
+
+        // 设置请求头
+        xhr.setRequestHeader('Accept','application/json')
+
+        // 设置请求的时候， readyState属性变化的一个监控
+        xhr.onreadystatechange = (res => {
+          // 如果请求的readyState!=4 ，说明还没有请求完毕
+          /**
+           * 0 - 未初始化。尚未调用 open() 方法
+            1 - 启动。已经调用 open() 方法，但尚未调用 send() 方法。
+            2 - 发送。已经调用 send() 方法，但尚未接收到响应。
+            3 - 接收。已经接收到部分响应数据。
+            4 - 完成。已经接收到全部响应数据，而且已经可以在客户端使用了。
+          */
+          if(xhr.readyState != 4) {
+            return
+          }
+          // 如果请求成功200，那么resolve它。否则reject它
+          if(xhr.status === 200) {
+            resolve(xhr.responseText)
+          } else {
+            reject(new Error(xhr.responseText))
+          }
+        })
+
+        // 发送请求
+        xhr.send()
+      })
+    }
+
+    // 调用
+    getData('./index.json').then(res => {
+
+    })
+  </script>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      class Yideng {
+        static str = '京城一灯'
+        sayStr = ()=>{   // 函数变量声明，不会提升
+          throw new Error('Need to implement')
+        }
+      }
+      class Student extends Yideng{
+        constructor() {
+          super()
+        }
+        sayStr() {      // 函数声明会提升
+          console.log(Student.str)
+          console.log(111)
+        }
+      }
+      const laoyuan = new Student()
+      console.log(Student.str)
+      laoyuan.sayStr()
+
+      // A、undefined,报错Need to implement
+      // B、undefined,京城一灯
+      //C、undefined,undefined
+      // D、京城一灯，报错Need to implement
+      // E、京城一灯，京城一灯
+      // F、京城一灯，undefined
+      // G、str is not defined ,京城一灯
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /**
+      答案：选D
+      ①在ES中类的继承是可以继承静态属性的，不晓得同学可以使用babel编译之后就可以很清晰的看到了
+      ②在 class 里用 = 号声明的变量属于 Field declarations 的语法，下面是TC39规范，也就证明了实际Yideng的sayStr被挂载到了实例属性上，读取优于原型链
+      https://github.com/tc39/proposal-class-fields#field-declarations
+      */
+    </script>
+  </head>
+</html>

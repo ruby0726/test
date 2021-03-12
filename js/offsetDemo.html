@@ -1,0 +1,48 @@
+<body>
+  <style>
+    /* offsetLeft值跟offsetTop值的获取跟父级元素没关系，而是跟其上一级的定位元素(除position:static;外的所有定位如fixed,relative,absolute)有关系。 */
+    body {
+      margin: 0;
+    }
+
+    .box1 {
+      width: 300px;
+      height: 300px;
+      margin: 100px;
+      background: #333;
+      overflow: hidden;
+      /* box1加上了相对定位，这时候box2，box3的上一级定位元素不再是body了，这时他们获取到的offsetLeft值跟offsetTop值都是相对于box1的偏移量 */
+      position: relative;
+    }
+
+    .box2 {
+      width: 200px;
+      height: 200px;
+      margin: 100px;
+      background: #666;
+      overflow: hidden;
+      /* box1跟box2都加上了相对定位，这时候，box3的上一级定位元素变成是box2，box2的上一级定位元素是box1，box1的上一级定位元素还是body */
+      position:relative;
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      margin: 100px;
+      background: #999;
+    }
+  </style>
+  <div class="box1">
+    <div class="box2">
+      <div class="box3"></div>
+    </div>
+  </div>
+  <script>
+    var oBox1 = document.querySelector('.box1');
+    var oBox2 = document.querySelector('.box2');
+    var oBox3 = document.querySelector('.box3');
+
+    console.log('box1: ' + oBox1.offsetLeft + ',' + oBox1.offsetTop);
+    console.log('box2: ' + oBox2.offsetLeft + ',' + oBox2.offsetTop);
+    console.log('box3: ' + oBox3.offsetLeft + ',' + oBox3.offsetTop);
+  </script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <h1>判断对象的数据类型:</h1>
+  <div style="margin: 20px 0">
+    使用Object.prototype.toString配合闭包，通过传入不同的判断类型来返回不同的判断函数，一行代码。简洁优雅灵活（注意传入type参数时首字母大写）
+  </div>
+  <div style="color:red;margin: 20px 0">
+    不推荐将这个函数用来检测可能会产生包装类型的基本数据类型上，因为call始终会将第一个参数进行装箱操作，导致基本类型和包装类型无法区分。
+  </div>
+  <div>
+    基本类型：Undefined,Null,Boolean,Number,String
+    <br/>
+    基本包装类型：Boolean,Number,String
+  </div>
+</html>
+<script>
+
+  // const isType = ((type) => {
+  //   return (target) => {
+  //     return `[object ${type}]` === Object.prototype.toString.call(target)
+  //   }
+  // })
+
+  // 简写
+  const isType = type => target => `[object ${type}]` === Object.prototype.toString.call(target)
+  const isArray = isType('Array')
+  const isObject = isType('Object')
+  const isFunction = isType('Function')
+
+
+  console.log(isNumber(new Number('1')))
+  console.log(isArray([]))
+  console.log(isObject({}))
+  console.log(isObject(function(){}))
+
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <div class="parent">parent
+    <div class="child">child</div>
+  </div>
+  
+</html>
+<style>
+  .parent {
+    position: relative;
+    background-color: yellow;
+    width: 100px;
+    height: 200px;
+    /* line-height有单位时，子元素是继承父元素的line-height的，无单位时，其line-height等于无单位的数值乘以子元素本身的字体大小 */
+    font-size: 40px;
+    line-height: 20%;
+  }
+  .child {
+    position: absolute;
+    /* 父元素高度的5% */
+    top: 5%;
+    left: 5%;
+    background-color: aqua;
+    /* 父元素宽度的10% */
+    margin-top: 10%; 
+    margin-bottom: 10%;
+    padding-top: 10%;
+    /* 父元素宽度的10% */
+    margin-left: 10%;
+    /* 父元素高度的10% */
+    min-height: 10%;
+    font-size: 20px;
+  }
+</style>

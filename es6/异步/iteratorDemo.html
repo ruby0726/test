@@ -1,0 +1,58 @@
+<html>
+  <div>111</div>
+</html>
+<script>
+  // 只要部署了Symbol.iterator属性，就可以用for...of    for...of循环本质上就是调用了这个接口产生的遍历器
+  const arr = ['red','green','blue'];
+  for(let v of arr) {
+    console.log(v)
+  }
+
+  const obj = {}
+  obj[Symbol.iterator] = arr[Symbol.iterator].bind(arr);
+  for(let v of obj){
+    console.log(v)
+  }
+  //空对象obj部署了数组arr的Symbol.iterator属性，结果obj的for...of循环，产生了与arr完全一样的结果。
+
+
+  let arr1 = [3,5,7];
+  arr1.foo = 'hello'
+  for(let i in arr1) {
+    console.log(i)
+  }
+  // 数组的遍历器接口只返回具有数字索引的属性    这一点跟for...in 又不一样
+  for(let i of arr1) {
+    console.log(i)
+  }
+
+  var es6 = new Map();
+    es6.set("edition", 6);
+    es6.set("committee", "TC39");
+    es6.set("standard", "ECMA-262");
+    for (var [name, value] of es6) {
+      console.log(name + ": " + value);
+    }
+
+    // 上面代码表示，对于普通的对象，for...in循环可以遍历键名，for...of循环会报错。
+
+    //   一种解决方法是，使用Object.keys方法将对象的键名生成一个数组，然后遍历这个数组。
+
+    let someObj = {
+      a:1,
+      b:2,
+      c:3
+    }
+    for(let k of Object.keys(someObj)) {
+      console.log(someObj[k])
+    }
+
+    //下面是一个使用 break 语句，跳出for...of循环的例子。
+    let fibonacci = [1,100,1000,10000]
+    for (let n of fibonacci) {
+      if(n>1000){
+        break;
+      }
+      console.log(n);
+    }
+</script>

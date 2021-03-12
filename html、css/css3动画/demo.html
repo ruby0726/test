@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <!-- BFC容器下（这里指body元素） -->
+  <body>
+    <div class="box1">box1box1box1box1box1box1</div>
+    <div class="box2">box2box2box2box2box2</div>
+    <div class="box3">box3box3box3box3box3box3</div>
+    <div class="box4">hhhhh</div>
+    <!-- <div style="height: 100px;width: 100px;float: left;background: lightblue">我是一个左浮动的元素</div>
+    <div style="width: 200px; height: 200px;background: grey">我是一个没有设置浮动,
+      也没有触发 BFC 元素, width: 200px; height:200px; background: grey;
+    </div> -->
+    <!-- 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，
+      如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： -->
+    <!-- <div style="height: 100px;width: 100px;float: left;background: lightblue">我是一个左浮动的元素</div>
+    <div style="width: 200px; height: 200px;background: grey;overflow: hidden;">我是一个没有设置浮动,
+      也没有触发 BFC 元素, width: 200px; height:200px; background: grey;
+    </div> -->
+    <!-- <div class="person"></div> -->
+    <!-- <div class="content">
+      <div class="box1"></div>
+      <div class="box2">
+        <div class="box2-1"></div>
+        <div class="box2-2"></div>
+      </div>
+    </div> -->
+  </body>
+</html>
+<style>
+  .person {
+    width: 80px;
+    height: 80px;;
+    background: url('../images/person.webp') no-repeat;
+    background-size: 700%;
+    animation: personBlast .8s steps(8) infinite; 
+  }
+  @keyframes personBlast {
+    0% {
+      background-position: left;
+    }
+    100% {
+      background-position: right;
+    }
+  }
+  body {
+    border: 1px solid red
+  }
+  .content {
+    border: 1px solid black;
+    /* 利用BFC清除浮动 */
+    /* overflow: hidden; */
+  }
+  .box1 {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    /* margin: 20px 0; */
+  }
+  .box2 {
+     /* 形成了独立的BFC */
+    /* display: inline-block;*/
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    /* margin: 20px 0; */
+    /* 形成了独立的BFC */
+    float: left; 
+  }
+  .box3 {
+     /* 形成了独立的BFC */
+    /* display: inline-block;*/
+    width: 100px;
+    height: 100px;
+    border: 1px solid pink;
+    /* margin: 20px 0; */
+    /* 形成了独立的BFC */
+    float: left; 
+  }
+  .box4 {
+    background-color: rebeccapurple;
+  }
+  
+  
+  .box2-1 {
+    width: 100px;
+    height: 20px;
+    background-color: yellowgreen;
+    margin: 10px 0;
+  }
+  .box2-2 {
+    width: 100px;
+    height: 20px;
+    background-color: orange;
+    margin: 10px 0;
+  }
+
+
+</style>

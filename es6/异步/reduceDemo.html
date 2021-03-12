@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      let arr = [68,53,12,98,65];
+      let result = arr.reduce(function(tmp,item,index){
+        alert(index+':'+tmp+','+item)
+        // 求平均数
+        if(index===arr.length-1) {  // 最后一次
+          return (tmp+item)/arr.length
+        } else {
+          return tmp + item
+        }
+      })
+      alert(result)
+    </script>
+  </head>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    // 通过filter，其实内核也是lastIndexOf和当前索引值的一个对比
+    const jsliangSet = (arr)=> {
+      return arr.filter((item,index) => {
+        return arr.lastIndexOf(item) === index
+      })
+    }
+    
+  </script>
+</html>

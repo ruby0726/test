@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    const fn = (arr)=> {
+      // 设置结果
+      const result = []
+      // 遍历数组
+      for(let i=0;i<arr.length;i++) {
+        // 如果结果要不包含这个元素
+        // 这里也可以用result.indexof(arr[i] === -1)
+        // 或者arr.lastIndexOf(arr[i]) === i
+        if(!result.includes(arr[i])) {
+          result.push(arr[i])
+        }
+      }
+      // 返回结果
+      return result
+    }
+  </script>
+</html>

@@ -1,0 +1,99 @@
+<html>
+<div class="contract-operate_recodeMain">
+  <ul class="contract-operate_recode_date">
+    <li>
+      <span class="operate-date">2019-01-04 11:14:21</span>
+      <i></i>
+      <span class="operate-des">标准单次合同生成，待我方签章</span>
+    </li>
+    <li>
+      <span>2019-01-05 13:22:32</span>
+      <i></i>
+      <span>文件1我方签章 操作人：李莲</span>
+    </li>
+    <li>
+      <span>2019-01-08 16:02:02</span>
+      <i></i>
+      <span>文件1对方签章 操作人：王二</span>
+    </li>
+    <li>
+      <span>2019-01-10 10:11:21</span>
+      <i></i>
+      <span>文件1合同签署完成</span>
+    </li>
+  </ul>
+</div>
+
+</html>
+
+<style>
+  .contract-operate_recode_date {
+    margin-left: 56px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    li {
+      width: 100%;
+      :nth-child(1) {
+        width: 119px;
+        height: 16px;
+        font-size: 12px;
+        color: #333333;
+      }
+      :nth-child(2) {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #D8D8D8;
+        border-radius: 50%;
+        margin: 0 50px;
+        &:after {
+          content: '';
+          display: block;
+          clear: both;
+          width: 1px;
+          height: 38px;
+          background-color: #D8D8D8;
+          margin: 8px auto;
+        }
+      }
+      :nth-child(3) {
+        font-size: 12px;
+        color: #333333;
+        display: inline-block;
+        width: 170px;
+        height: 16px;
+      }
+    }
+    li:last-child {
+      :nth-child(1) {
+        font-size: 12px;
+        color: #09B9C1;
+        display: inline-block;
+        width: 119px;
+        height: 16px;
+      }
+      :nth-child(2) {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: $c991;
+        border-radius: 50%;
+        &:after {
+          content: '';
+          display: none;
+        }
+      }
+
+      :nth-child(3) {
+        font-size: 12px;
+        color: $c991;
+        letter-spacing: 0;
+        display: inline-block;
+        width: 170px;
+        height: 16px;
+      }
+    }
+  }
+</style>

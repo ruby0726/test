@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="firstDiv">
+    width:auto 和 width:100%的区别
+  </div>
+  <div class="wrap">
+    
+    <h3>li标签空白测试</h3>
+    <ul>
+      <li class="part1"></li>
+      <li class="part2"></li>
+      <li class="part3"></li>
+      <li class="part4"></li>
+    </ul>
+  </div>
+</body>
+</html>
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+.firstDiv {
+  background-color: pink;
+  width: auto;
+  height: 100px;
+}
+body {
+    width:100%;
+}
+ul li {
+    list-style-type: none;
+}
+h3 {
+    text-align: center;
+    color: blue;
+    margin-bottom: 10px;
+}
+.wrap {
+    width:600px;
+    margin:0 auto;
+    margin-top:100px;
+}
+.wrap li {
+    width:25%; 
+    height: 150px;
+    display:inline-block;
+}
+.part1 {background-color:red;}
+.part2 {background-color:blue;}
+.part3 {background-color:yellow;}
+.part4 {background-color:black;}
+</style>

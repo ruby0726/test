@@ -1,0 +1,50 @@
+<html>
+  <body>
+
+  </body>
+</html>
+<script>
+  // let p = new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     Math.random()>0.5?resolve('success'):reject('fail');
+  //   },1000)
+  //   })
+  //   console.log(p)
+  //   // then方法可以接受两个函数作为参数，第一个是用来处理resolve的结果，第二个是可选的，用来处理reject的结果
+  //   //@1
+  //   p.then((result) => {
+  //     console.log(result);
+  //   },(err)=> {
+  //     console.log(err)
+  //   })
+
+// @2    Promise 能够链式调用的原理:promise 的 then/catch 方法执行后会也返回一个 promise
+    let p1 = new Promise((resolve, reject) => {
+        let flag = Math.random() > 0.5 ? true : false;
+        resolve(123);
+      });
+      p1.then((result) => {
+        console.log(result);
+      }).then(() => {
+        console.log('2')
+        return 'hello'
+      }).then((result) => {
+        console.log(result);
+      });
+
+    // @3 在then方法内部可以再次使用异步的操作
+      // p2.then(() => {
+      //   console.log('******');
+      //   let p2 = new Promise((resolve, reject) => {
+      //     setTimeout(() => {
+      //       resolve(123);
+      //     }, 1000);
+      //   });
+      //   return p2;
+      // }).then((result) => {
+      //   console.log(result);
+      // });
+
+
+
+</script>

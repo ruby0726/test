@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DOM 操作</title>
+  <style>
+    div {
+      border: 1px solid #ccc;
+      padding: 50px;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="dom1">元素 1</div>
+  <div class="dom2">元素 2</div>
+
+  <button class="btn">点我</button>
+
+  <script>
+
+    (function() {
+      const btn = document.querySelector('.btn')
+
+      // 注册点击事件
+      btn.onclick = function() {
+        const dom1 = document.getElementById('dom1')
+        // 第一种添加元素
+        const newDom1 = document.createElement('p')
+        newDom1.innerHTML = '<a href="https://github.com/LiangJunrong/document-library">jsliang 的文档库</a>'
+        dom1.appendChild(newDom1)
+
+        // 第二种添加元素
+        const newDom2 = document.createElement('ul')
+        newDom2.innerHTML = `
+          <li>aaa</li>
+          <li>bbb</li>
+        `
+        document.body.removeChild(newDom2)
+
+        // 移除元素
+        const dom2 = document.querySelector('.dom2')
+        document.body.removeChild(dom2)
+      }
+    })()
+  </script>
+</body>
+
+</html>

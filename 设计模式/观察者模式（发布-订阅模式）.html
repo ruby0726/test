@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button id="trigger">发布</button>
+    <button id="remove">取消订阅</button>
+  </body>
+</html>
+<script>
+  // 1、发布订阅功能
+  const eventObj = {
+    // 缓存列表，缓存订阅者的回调函数
+    clientList: {},
+    // 添加订阅者
+    listen: function (key, fn) {
+      const fns = this.clientList[key]
+      if (!fns) {
+        this.clientList[key] = []
+      }
+      this.clientList[key].push(fn)
+    },
+    // 发布消息
+    trigger: function (key, msg) {
+      const fns = this.clientList[key]
+      if (!fns || fns.length === 0) {
+        return false
+      }
+      for (let i = 0, len = fns.length; i < len; i++) {
+        const fn = fns[i]
+        fn(msg)
+      }
+    },
+    // 删除订阅者
+    remove: function(key,fn) {
+      const fns =  this.clientList[key]
+      if(!fns) {
+        return false
+      }
+      // 如果fn不存在，就删除整个key对应的所有订阅
+      if(!fn) {
+        this.clientList[key] = []
+      }else {
+        for (let i = 0, len = fns.length; i < len; i++) {
+          const _fn = fns[i]
+          if (_fn === fn) {
+            fns.splice(i, 1)
+          }
+        }
+      }
+    }
+  }
+  // 2、可以给所有对象动态安装  发布-订阅功能
+  const installEvent = function (obj) {
+    for (let i in eventObj) {
+      obj[i] = eventObj[i]
+    }
+  }
+
+  // obj1添加监听事件
+  var obj1 = {}
+  installEvent(obj1)
+  obj1.listen('say', (msg) => {
+    console.log("say" + msg)
+  })
+  obj1.listen('say', (msg) => {
+    console.log("say2" + msg)
+  })
+  obj1.listen('eat', (msg) => {
+    console.log("eat" + msg)
+  })
+
+  //test
+  document.getElementById("trigger").addEventListener("click", function () {
+    obj1.trigger('say', '==>test say message')
+    obj1.trigger('eat', '---> test eat message')
+  }, false)
+
+  document.getElementById("remove").addEventListener('click', function () {
+    // 取消订阅 test
+    obj1.remove('say')
+    obj1.trigger('say', '---> test say message')
+  }, false)
+
+  //全局发布-订阅对象更好，解决了发布-订阅模式存在的问题  见网址：https://zhuanlan.zhihu.com/p/76039838
+
+
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <titl></titl>
+    <script>
+      window.onload = function() {
+        let aBtn = document.getElementsByTagName('input')
+
+        for(var i=0;i<aBtn.length;i++) {
+          // 1、使用闭包
+          (function(i){
+            aBtn[i].onclick=function() {
+              alert(i);
+            }
+          })(i)
+        }
+        // 2、使用let
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="a"/>
+    <input type="button" value="b" />
+    <input type="button" value="c" />
+  </body>
+</html>

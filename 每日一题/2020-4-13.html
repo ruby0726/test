@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    // 第一题  写出打印结果，并解释为什么
+    const num = parseInt('2*4',10)
+    console.log(num)
+
+    // 第二题，
+    //-----case  1-------------
+    {
+      function test() {}
+      test = 123
+    }
+    console.log(test)  //123
+
+    //----case 2-----------------
+    {
+      function test() {}
+      test = 123
+      function test(){}
+    }
+    console.log(test)
+
+    //----case 3-----------------
+      {
+        function test() {}
+        test = 123
+        function test() {}
+        test = 234
+      }
+      console.log(test)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // 第一题答案:
+
+      //   2
+
+      //   解析：
+
+      //   1.只返回了字符串中第一个字母.设定了进制后(也就是第二个参数，指定需要解析的数字是什么进制: 十进制、十六机制、八进制、二进制等等……), parseInt检查字符串中的字符是否合法.一旦遇到一个在指定进制中不合法的字符后，立即停止解析并且忽略后面所有的字符。
+      //   2. * 就是不合法的数字字符。所以只解析到2，并将其解析为十进制的2，num的值即为 2
+  </script>
+</html>

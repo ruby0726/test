@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      async function show() {
+        let a=1;
+        let b=2;
+        try{
+          let data = await $.ajax({url:'data/1.text',dataType:'json'})
+          alert(a+b+data[0])
+        }catch(e) {
+          // 捕获错误
+          alert('读取失败')
+        }
+      }
+      show()
+    </script>
+  </head>
+</html>

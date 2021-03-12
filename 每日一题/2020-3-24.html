@@ -1,0 +1,45 @@
+
+<html>
+  <div>
+    2020-3-24
+  </div>
+</html>
+<script>
+
+  // 写出执行结果，并解释原因
+  var a1={},b1='123',c1=123;
+  a1[b1] = 'b';
+  a1[c1]= 'c';
+  console.log(a1[b1])  // c
+
+  var a2={},b2=Symbol('123'),c2=Symbol('123');
+  a2[b2]='b'
+  a2[c2]='c'
+  console.log(a2[b2])  //b
+
+  var a3={},b3={key:'123'},c3={key:'456'};
+  a3[b3] = 'b';
+  a3[c3] = 'c';
+  console.log(a3)  // {[object Object]: "c"}
+  console.log(a3[b3])
+
+
+  /**
+  object属性名称：
+  属性名称必须是字符串或者Symbol,这意味着非字符串对象不能用来作为一个对象属性的键。任何非字符串对象，包括Number,
+  都会通过toString方法，被转换成一个字符串
+  */
+
+  var object = {}
+  object['1'] = 'value'
+  console.log(object[1])  //value
+
+</script>
+
+
+
+
+
+<!-- 解析：JavaScript中的对象只能使用String类型作为键类型，所以1和3会覆盖，SymboltoString是有区别所以cbc -->
+
+

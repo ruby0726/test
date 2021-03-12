@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <div class="parent">
+    </div>
+    <style>
+      .parent {
+        width: 100%;
+        height: 100vh;
+        background-image: url('./images/3.jpg');
+        /* css3新增：
+        background-repeat：round：为图片不被剪切，自动调整图片大小来适应背景区域。
+        background-repeat：space：为图片不被剪切，自动添加图片间空白来适应背景区域。
+         */
+        background-repeat:repeat;
+        /* cover：拉大图片，完全填满背景区；保持宽高比。
+        contain：缩放图片，使其恰好适合背景区；保持宽高比。 */
+        /* background-size: contain; */
+        border: 10px dashed yellow;
+        /* background-clip 属性规定背景的绘制区域。 */
+        background-clip: border-box;
+        padding:20px;
+        /* 
+        background-origin 属性规定 background-position 属性相对于什么位置来定位。
+        如果背景图像的 background-attachment 属性为 "fixed"，则该属性没有效果。 
+        */
+        background-origin: content-box;
+        background-position: right bottom;
+      }
+    </style>
+  </head>
+</html>

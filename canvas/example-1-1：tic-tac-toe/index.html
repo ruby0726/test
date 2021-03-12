@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>案例1： 井字游戏</title>
+  </head>
+  <body>
+    <canvas width="1000" height="1000" id="canvas"></canvas>
+    <script type="text/javascript">
+      /* 各种变量 */
+      var margin = 50; // 棋盘离画布左边缘和上边缘的距离
+      var padding = 30; // 棋子离棋盘分隔线的距离，决定了棋子的大小
+      var width = 450; // 棋盘的宽度
+      var height = width;  // 棋盘的高度，理论上应该跟宽度保持一致
+      var circleRadius = width/3/2 - padding; // 圆棋子的半径
+
+      /* 画棋盘*/
+      function drawChessboard(ctx) {
+        ctx.strokeRect(margin,margin,width,height)
+        /*开始画棋盘的分割线*/
+        ctx.beginPath()
+        // 画第一根横线
+        ctx.moveTo(margin,margin+height/3)
+        ctx.lineTo(margin+width, margin + height / 3)
+        // 画第二根横线
+        ctx.moveTo(margin, margin + (height / 3)*2)
+        ctx.lineTo(margin + width, margin + (height / 3) * 2)
+        // 画第一根竖线
+        ctx.moveTo(margin+width/3, margin)
+        ctx.lineTo(margin + width / 3, margin + height)
+        // 画第二根竖线
+        ctx.moveTo(margin+ (width/3)*2, margin)
+        ctx.lineTo(margin + (width / 3) * 2, margin + height)
+
+        ctx.stroke()
+      }
+
+      /* 画棋子 */
+      function drawchesspiece(ctx) {
+        ctx.beginPath()
+        // 画第二颗棋子
+        ctx.beginPath()
+        ctx.arc(margin + width / 3 + padding + circleRadius, margin + height / 3 + padding + circleRadius, circleRadius, 0, 2 * Math.PI)
+        // 画第一颗棋子
+        ctx.moveTo(margin+padding,margin+padding)
+        ctx.lineTo(margin +width/3 - padding, margin +height/3 - padding)
+        ctx.moveTo(margin + (width/3 - padding), margin + padding)
+        ctx.lineTo(margin +padding,margin + (height/3 - padding))
+
+        ctx.stroke()
+      }
+
+      /* 绘制 */
+      function drawCanvas(id) {
+        var canvas = document.getElementById(id)
+        if(canvas === null || !canvas.getContext) {
+          return false
+        }
+        var context = canvas.getContext('2d')
+        drawChessboard(context)
+        drawchesspiece(context)
+      }
+      drawCanvas('canvas')
+    </script>
+  </body>
+</html>

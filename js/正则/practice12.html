@@ -1,0 +1,58 @@
+<script>
+  // 1.给一个连字符串例如：get - element - by - id转化成驼峰形式。
+  var str = 'get-element-by-id'
+  var reg = /-\w/g   // 匹配横杠以及之后的一个字符，全局匹配
+  // console.log(str.replace(reg, function (...args) {
+  //   console.log(args)
+  // })) 
+  console.log(str.replace(reg, function ($0) {
+    console.log($0)
+    return $0.slice(1).toUpperCase
+  })) 
+
+  // 2 . 匹配二进制数字
+  var str1 = "10101111";
+  var reg1 = /^[01]+$/g;
+  console.log(reg1.test(str1))
+
+  // 3 . 非零的十进制数字 (有至少一位数字, 但是不能以0开头)
+  var str2 = '10'
+  var reg2 = /^[1-9][0-9]*$/g
+  console.log(reg2.test(str2))
+
+  // 4 . 匹配一年中的12个月
+  var str3 = '12'
+  var reg3 = /^(0?[1-9]|1[0-2])$/g
+  console.log(reg3.test(str3))
+
+  // 5 . 匹配qq号首位不能为0,最短5位最长为13位
+  var str4 = '10009093283333'
+  var reg4 = /^[1-9][0-9]{4,12}$/g
+  console.log(reg4.test(str4))
+
+  // 6 . 匹配常见的固定电话号码
+  var str5 = "000-12344562"
+  //  \(? 匹配左括号一次或0次然后以0开头后面加两个数字，再匹配右括号或空格或减号一次或0次，随后匹配8个数字
+  var reg5 = /\(?0\d{2}[) -]?\d{8}/g
+  console.log(str5.match(reg5))
+
+  // 7 . 匹配用尖括号括起来的以a开头的字符串
+  var str6 = "<a herf='www.baidu.com'>"
+  // var reg6 = /^[<][a].*[>]$/g
+  var reg6 = /<a[^>]+>/g
+  console.log(str6.match(reg6))
+
+  // 8. 从后面分割数字每三个以一个逗号划分
+  var str7 = "12345678901"
+  function numSplit(str) {
+    var reg7 = /(\d)(?=(\d{3})+$)/g;
+    //(\d{3})+$ 的意思是连续匹配 3 个数字，且最后一次匹配以 3 个数字结尾。
+    //要找到所有的单个字符，这些字符的后面跟随的字符的个数必须是3的倍数，并在符合条件的单个字符后面添加,
+    // return str.replace(reg7, '$1,');
+    return str.replace(reg7,(arg)=>{
+      return arg+','
+    })
+  }
+  console.log(numSplit(str7))
+
+</script>

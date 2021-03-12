@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  let haystack = [
+    {
+      id: "first",
+      type: "list",
+      children: [
+        {
+          id: "second0",
+          type: "list",
+          children: [
+            {
+              id: "third0",
+              type: "list"
+            },
+            {
+              id: "third1",
+              type: "list"
+            }
+          ]
+        },
+        {
+          id: "second1",
+          type: "list"
+        }
+      ]
+    },
+    {
+      id: "first1",
+      type: "list",
+      children: [
+        {
+          id: "second2",
+          type: "list"
+        }
+      ]
+    }
+  ];
+
+  function array_search(
+    haystack,
+    needle,
+    path = [],
+    property = "id",
+    children = "children"
+  ) {
+    if (
+      haystack.some(item => {
+        if (item[property] === needle) {
+          path.push(item[property]);
+          return true;
+        } else if (item[children]) {
+          path.push(item[property]);
+          if (array_search(item[children], needle, path)) {
+            return true;
+          } else {
+            path = [];
+            return false;
+          }
+        } else {
+          return false;
+        }
+      })
+    ) {
+      return path;
+    } else {
+      return null;
+    }
+  }
+
+  let res = array_search(haystack, "third1");
+
+  console.log(res); // ["first", "second0", "third1"]
+</script>

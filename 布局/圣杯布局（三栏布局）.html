@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="container" >
+			<!--先写内容区可以实现优先加载-->
+			<div id="center" class="column">
+				<h2>center</h2>
+			</div>
+			<div id="left" class="column">left</div>
+			<div id="right" class="column">right</div>
+		</div>
+	</body>
+	<style>
+		body {
+			min-width: 550px;
+		}
+		#container {
+			padding-left: 200px;
+			padding-right: 150px;
+		}
+		#container .column {
+			float: left;
+		}
+		#center {
+			width: 100%;
+			background-color: red;
+		}
+		#left {
+			width: 200px;
+			margin-left: -100%;
+			position: relative;
+			right: 200px;
+			background-color: yellow;
+		}
+		#right {
+			width:150px;
+			margin-right: -150px;
+			/* margin-left: -150px;
+			position: relative;
+			left: 150px; */
+			background-color: blue;
+		}
+	</style>
+</html>

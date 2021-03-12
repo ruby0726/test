@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const set = (key,value) => {
+      const curTime = new Date().getTime()
+      localStorage.setItem(key,JSON.stringify({data:value,time:curTime}))
+    }
+    const get = (key,exp)=> {
+      const localData = localStorage.getItem(key)
+      if(!localData) return ''
+      const localDataObj = JSON.parse(localData)
+      const nowTime = new Date().getTime()
+      const localDataTime = localDataObj.time || nowTime
+      if(nowTime - localDataObj.time > exp) {
+        console.log('数据已过期')
+        localStorage.removeItem(key)
+        return false
+      } else {
+        if (!localDataObj.data) return ''
+        const data = Json.parse(localDataObj.data)
+        return data
+      }
+    }
+
+    // 使用
+    const value = '{"name":"ll"}'
+    set("info",value)
+    set("info",1000) // 过期时间为1秒
+    get("info",1000*60*60) // 过期时间为1分钟
+
+  </script>
+</body>
+</html>

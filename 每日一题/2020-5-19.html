@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <div>
+
+  </div>
+</html>
+<script>
+  // 给定一个整数数组nums和一个目标值target,请你在该数组中找到和为目标值的那两个整数，这两个整数可能有多种组合，找出其中一组组合即可，并返回他们的数组下标
+  // 示例：
+    // 给定  nums = [2,7,11,15],target = 9   因为nums[0]+nums[1] = 2 + 7 = 9  所以返回[0,1]
+
+    var numsArr = [12, 2, 2, 7,0,13]
+    var targetVal = 13
+    var currentIndex = 0;
+    (function getIndex(nums,target, currentIdx) { 
+      for (let i = currentIdx; i < nums.length; i++) {
+        if (target - nums[currentIdx] === nums[i]) {
+          return console.log([currentIdx,i])
+        } else if (i === nums.length - 1) {
+          if(currentIdx<nums.length-1) {
+            currentIdx++
+            getIndex(numsArr, targetVal, currentIdx)
+          }
+        }
+      }
+    }(numsArr, targetVal, currentIndex))
+
+
+    // 每次都基于当前遍历到的值往后查找   看有没有匹配的
+    function getIndex1(nums,target) {
+      let ans = 0;
+      let index = 0;
+      for(let i=0;i<nums.length;i++) {
+        if(ans == target - nums[i]) {
+          return [index,i]
+        } else {
+          ans = nums[i]
+          index = i
+        }
+      }
+    }
+    console.log(getIndex1(numsArr, targetVal))
+
+
+    // 使用一个Map记录已经遍历过的数字及其对应的索引值。这样当遍历一个新数字的时候去Map里查询，target与该数的差值是否已经出现过，
+    // 如出现过则已经得到答案则无需再往后遍历
+    const twoSum = function(nums,target) {
+      {
+        const map = new Map();
+        for(let i=0;i<nums.length;i++) {
+          const diff = target - num[i]
+          if(map.has(diff)) {
+            return [map.get(diff),i]
+          }
+          map.set(nums[i],i)
+        }
+      }
+    }
+
+</script>

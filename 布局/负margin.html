@@ -1,0 +1,56 @@
+<!-- <html>
+  <div class="parent">
+    <div class="son"></div>
+  </div>
+</html>
+<style>
+   /* 在文档流中，元素的最终边界是由margin决定的 */
+  .parent {
+    width:100px;
+    background-color: black;
+    overflow:hidden;
+  }
+  .son {
+    height: 100px;
+    /* background-color: yellow; */
+    margin-bottom: -20px;
+  }
+</style> -->
+
+<html>
+  <div class="container">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+</html>
+<style>
+  body,ul,li {padding:0;margin:0}
+  ul,li {
+    list-style: none;
+  }
+  .container {
+    height: 210px;
+    width:460px;
+    border:5px solid #000
+  }
+  ul {
+    height: 210px;
+    overflow: hidden;
+    /* 相当于把ul的宽度增加了20px */
+    margin-right: -20px; 
+  }
+  li {
+    height: 100px;
+    width: 100px;
+    background: blue;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
+</style>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      //new操作符都做了什么，并手动实现一下
+      /* 1、创建一个新的空对象；
+        2、将新对象的_proto_指向构造函数的prototype
+        3、将构造函数的作用域赋给新对象。也就是让构造函数的this指向这个新对象；
+        4、执行构造函数中的代码（为新对象添加属性）
+        5、返回新对象
+      
+      */
+      // var obj = new Base()
+      var obj={}
+      obj._proto_ = Base.prototype
+      Base.call(obj); // 改变this指向，并调用这个函数
+
+      // 完整实例
+      function Base(a) {
+        this.a = a
+      }
+      Base.prototype.b = 'bbb'
+      // new操作
+      let base1 = new Base('aaa')
+      console.log(base1)
+
+      // 模拟new操作
+      let base2 = {}
+      base2._proto_ = Base.prototype
+      Base.call(base2,'aaa') // 改变this指向，并且调用这个函数，使this.a执行
+      console.log(base2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /**答案&解析**
+
+          1.new操作符做了什么
+          new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。new 关键字会进行如下的操作：
+          创建一个空的简单JavaScript对象（即{}）；
+          链接该对象（即设置该对象的构造函数）到另一个对象 ；
+          将步骤1新创建的对象作为this的上下文 ；
+          如果该函数没有返回对象，则返回this。
+
+          2.简单实现
+
+          function create(Con, ...args){
+            // 创建一个空的对象
+            let  obj = Object.create(null);
+            // 将空对象指向构造函数的原型链
+            Object.setPrototypeOf(obj, Con.prototype);
+            // obj绑定到构造函数上，便可以访问构造函数中的属性，即obj.Con(args)
+            let result = Con.apply(obj, args);
+            // 如果返回的result是一个对象则返回
+            // new方法失效，否则返回obj
+            return result instanceof Object ? result : obj;
+          }
+
+          // 测试
+          function company(name, address) {
+              this.name = name;
+              this.address = address;
+            }
+
+          var company1 = create(company, 'yideng', 'beijing');
+          console.log('company1: ', company1);*/
+    </script>
+  </head>
+</html>

@@ -1,0 +1,60 @@
+<html>
+  <div>组合继承</div>
+</html>
+<script>
+  // 定义一个动物类
+    function Animal(name, color) {
+      // 属性
+      this.name = name || 'animal'
+      this.color = color || ['black']
+      // 实例方法
+      // this.eat = function (food) {
+      //   console.log(this.name + '正在吃' + food)
+      // }
+    }
+    // 把需要复用的方法写到原型链上
+    // 因为：而在 Animal 类中，像 eat ( ), sleep ( ), run ( ) 这类方法应该是公用的，不需要添加到每个实例上去，增大内存
+    Animal.prototype.sleep = function () {
+      console.log(this.name + '正在睡觉!')
+    }
+    Animal.prototype.eat = function (food) {
+      console.log(this.name + '正在吃' + food)
+    }
+
+    function Dog(name,sex) {
+      Animal.call(this)
+      this.name = name || 'mica'
+      this.sex = sex || '公'
+    }
+    Dog.prototype = new Animal()
+    console.log(Dog.prototype.constructor)  // 指向了Animal
+    Dog.prototype.constructor = Dog  // //将 Dog 原型对象的 constructor 指针重新指向 Dog 本身  
+    //(扶正不扶正的区别？？？？)  但是不修正也不影响继承，为什么要修改呢？  防止别人查看constructor得到错误信息，主要就是这个
+
+
+    var dog1 = new Dog()
+    dog1.name = '旺财'
+    dog1.eat('糖')
+    console.log(dog1.name)
+
+    var animal = new Animal()
+    console.log(animal.name)
+
+    
+    var dog2 = new Dog()
+    dog2.sleep()
+    dog2.eat('骨头')
+    console.log(dog2.name)
+
+    function Smalldog(name) {
+      Dog.call(this)
+      this.name = name || 'mica'
+    }
+    Smalldog.prototype = new Dog()
+    var smalldog = new Smalldog()
+    smalldog.name = '小狗'
+    smalldog.sex = '母'
+    console.log(smalldog.sex)
+    console.log(smalldog.name)
+    smalldog.eat('肉')
+</script>

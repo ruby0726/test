@@ -1,0 +1,20 @@
+<script>
+  const selfFilter = function(fn) {
+    if (typeof fn !== "function") {
+      throw new TypeError(`${fn} is not a function`);
+    }
+    let newArr = []
+    for (let i = 0; i < this.length; i++) {
+      if (!arr.hasOwnProperty(i)) continue
+      fn(this[i]) && newArr.push(this[i])
+    }
+    return newArr
+  }
+  Array.prototype.selfFilter = selfFilter
+
+  let arr = [2, 4, 6, 8];
+  let arr1 = arr.selfFilter(function (item) {
+    return item > 5
+  })
+  console.log(arr1)
+</script>

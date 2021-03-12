@@ -1,0 +1,19 @@
+
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <script type="text/javascript" src="./test2.js"></script>
+      <script type="text/javascript">
+        var vm = new vue();
+        setTimeout(function() {
+          console.log('changes');
+          console.log(vm.$data)
+          vm.$data.a =444;
+        },2000)
+      </script>
+    </div>
+  </body>
+</html>

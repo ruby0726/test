@@ -1,0 +1,16 @@
+<html>
+  <head></head>
+  <body>
+    <div id="dom1">111</div>
+    <script>
+      document.getElementById('dom1').onclick = function(){
+        console.log(111)
+      }
+      var oldDom = document.getElementById('dom1').onClick 
+      document.getElementById('dom1').onclick = function () {
+        oldDom()
+        console.log(222)
+      }
+    </script>
+  </body>
+</html>

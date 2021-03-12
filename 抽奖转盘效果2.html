@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>抽奖效果</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="pic">一等奖</div>
+      <div class="pic">二等奖</div>
+      <div class="pic">三等奖</div>
+      <div class="pic">八等奖</div>
+      <input type="button" id="mybtn" value="开始抽奖"/>
+      <div class="pic">四等奖</div>
+      <div class="pic">七等奖</div>
+      <div class="pic">六等奖</div>
+      <div class="pic">五等奖</div>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  // 采用window.onload来使页面加载完毕执行函数init
+  window.onload = init;
+
+  // 声明一个对象
+  var setting = {
+    // 计数器
+    count : 0,
+    // 大转盘的转动速度
+    delay:20,
+    // 大转盘最少转动次数
+    total:24,
+    // 大转盘转动方向
+    index: [0,1,2,4,7,6,5,3]
+  }
+
+  function init() {
+    document.getElementById('mybtn').onclick = function() {
+      // 重新声明转动速度及计数器
+      setting.delay = 20;
+      setting.count = 0;
+      var drawBtn = this;
+      this.disable = true;
+
+      var pics = document.getElementsByClassName('pic')
+      // 获取应该抽奖的随机数，采取floor是为了保证装盘至少转动四圈，也就是24次，最多五圈。32次
+      setting.total += Math.floor(Math.random()*pics.length)
+      // 创建执行函数
+      setTimeout(function show(){
+        // 初始化所有转盘的透明度
+        for (var i=0;i<pics.length;i++){
+          pics[i].style.opacity = "1";
+        }
+        // 声明应该修改的转盘透明度
+        var xiugai = pics[setting.index[setting.count%8]];
+        xiugai.style.opacity = "0.5";
+        setting.count++;
+        setting.delay+=2*setting.count;
+        if(setting.count>setting.total){
+          alert('恭喜你')
+          drawBtn.disable = false;
+        }
+        // 如果不大于，则重新执行函数show
+        setTimeout(show,setting.delay);
+      },setting.delay)
+    }
+  }
+
+</script>
+
+<style type="text/css">
+  *{
+    padding:0;
+    margin:0;
+    border:0;
+  }
+  html,body {
+    width:100%;
+  }
+  .container {
+    width:390px;
+    height: 390px;
+    position: relative;
+    top:100px;
+    margin:0 auto;
+    background: #eeeeee;
+  }
+  .pic {
+    width: 100px;
+    height: 100px;
+    margin:10px;
+    background: red;
+    display:inline-block;
+    color:white;
+    font-weight: bolder;
+    line-height:100px;
+    text-align: center;
+  }
+  #mybtn {
+    width: 100px;
+    height: 100px;
+    margin:0 10px;
+    background: yellow;
+  }
+</style>

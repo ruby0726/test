@@ -1,0 +1,30 @@
+<html>
+  <div>2020-3-30</div>
+</html>
+<script>
+  function fn() {
+    getValue = function() {
+      console.log(1)
+    }
+    return this;
+  }
+  fn.getValue = function() {
+    console.log(2)
+  }
+  fn.prototype.getValue = function() {
+    console.log(3)
+  }
+  var getValue = function() {
+    console.log(4)
+  }
+  function getValue (){
+    console.log(5)
+  }
+
+  // 请写出以下输出结果
+  getValue();  //4
+  fn().getValue(); // 1
+  getValue();  //1
+  new fn.getValue(); //2
+  new fn().getValue(); //3
+</script>

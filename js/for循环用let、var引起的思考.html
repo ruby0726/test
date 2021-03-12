@@ -1,0 +1,96 @@
+<html>
+  <body>
+
+  </body>
+</html>
+<script>
+
+  //使用var声明，得到3个3
+    var a = [];
+    for (var i = 0; i < 3; i++) {
+      a[i] = function () {
+        console.log(i);
+      };
+    }
+    a[0](); //3
+    a[1](); //3
+    a[2](); //3
+    //使用let声明，得到0,1,2
+    var a = [];
+    for (let i = 0; i < 3; i++) {  
+      a[i] = function () {
+        console.log(i);
+      };
+    }
+    a[0](); //0
+    a[1](); //1
+    a[2](); //2
+
+  // 对于一个for循环，设置循环变量的地方是一个父作用域，而循环体代码在一个子作用域中
+  // for循环执行顺序：设置循环变量（var i =0）==>循环判断（i<3） ==>满足执行循环体 ==》循环变量自增（i++）
+
+  // 那么我们来改写一下var情况的for循环
+
+  {
+      //我是父作用域
+      let i = 0;
+      if (0 < 3) {
+        a[0] = function () {
+          //我是子作用域
+          console.log(i);
+        };
+      };
+      i++; //为1
+      if (1 < 3) {
+        a[1] = function () {
+          console.log(i);
+        };
+      };
+      i++; //为2
+      if (2 < 3) {
+        a[2] = function () {
+          console.log(i);
+        };
+      };
+      i++; //为3
+      // 跳出循环
+    }
+    //调用N次指向都是最终的3
+    a[0](); //3
+    a[1](); //3
+    a[2](); //3
+
+    //在let情况下对for循环步骤拆分
+    var a = []; {
+        //我是父作用域
+        let i = 0;
+        if (i < 3) {
+          //这一步模拟底层实现
+          let k = i;
+          a[k] = function () {
+            //我是子作用域
+            console.log(k);
+          };
+        };
+        i++; //为1
+        if (i < 3) {
+          let k = i;
+          a[k] = function () {
+            console.log(k);
+          };
+        };
+        i++; //为2
+        if (i < 3) {
+          let k = i;
+          a[k] = function () {
+            console.log(k);
+          };
+        };
+        i++; //为3
+        // 跳出循环
+      }
+      a[0](); //0
+      a[1](); //1
+      a[2](); //2
+ 
+</script>

@@ -1,0 +1,35 @@
+<html>
+  <head></head>
+  <body>
+    <div>111</div>
+  </body>
+  <script>
+    function a() {
+      console.log(111)
+      let obarr = []
+      // copy一份数组的原型方法，防止污染原生数组方法
+      const arrayProto = Array.prototype
+      const arrayMethods = Object.create(arrayProto)
+      // 我们先把arrayMethods对象上的push转换为观察者对象
+      Object.defineProperty(arrayMethods, 'push', {
+        value: function mutator() {
+          // 缓存原生方法，之后调用
+          const original = arrayProto['push']
+          let args = Array.from(arguments)
+          original.apply(this,args)
+          console.log(obarr)
+        }
+      })
+      // 此时arrayMethods定义了一个push的新属性，那么我们如何把它和let obarr=[]绑定起来呢？
+      obarr._proto_ = arrayMethods
+      // 使用arrayMethods覆盖obarr的所有方法
+
+      //给obarr中push一个值看看
+      obarr.push(0)
+      obarr.push(0)
+      obarr.push(0)
+    }
+    a()
+
+  </script>
+</html>

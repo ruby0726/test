@@ -1,0 +1,30 @@
+<html>
+  <div>
+    1111
+  </div>
+</html>
+<script>
+  // function callLater(paramsA,paramsB,paramsC) {
+  //   // 使用函数表达式创建并返回一个匿名内部函数的引用
+  //   return(function() {
+  //     // 这个内部函数将被setTimeOut函数执行,并且当它被执行的时候，它能够访问并操作外部函数传递过来的参数
+  //     paramsA[paramsB] = paramsC
+  //   })
+  // }
+  // /**
+  // 调用这个函数将在它的执行上下文中创建，并最终返回内部函数对象的引用传递过来的参数，内部函数在最终被执行时，
+  // 将使用外部函数的参数返回的引用被赋予一个变量
+  // */
+  // var funcRef = callLater(elStyle,'display','none')
+  // hideMemu =  setTimeout(funcRef,500)
+
+  //  改造成闭包
+  function f1() {
+    var a = 1;
+    var f2 = function () {
+      console.log(a)
+    }
+    return f2
+  }
+  f1()()
+</script>

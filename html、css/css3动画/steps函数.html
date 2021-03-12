@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <p>steps（1， start）</p>
+  <div class="a box"></div>
+  
+  <p>steps（1， end）</p>
+  <div class="b box"></div>
+</html>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+  }
+  .a{
+      animation:changeColor 4s infinite steps(1, start);
+    }
+    .b{
+      animation:changeColor 4s infinite steps(1, end);
+    }
+    @keyframes changeColor{
+      0%{
+        background-color: red;
+      }
+      100%{
+        background-color: blue;
+      }
+    }
+</style>

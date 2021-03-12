@@ -1,0 +1,16 @@
+<script>
+  let person = new class{
+    constructor(name) {
+      this.name = name
+    }
+    sayName() {
+      console.log(this.name)
+    }
+  }('张三')
+  person.sayName();
+
+  // 类不存在变量提升
+
+  // 必须保证子类在父类之后定义
+  
+</script>

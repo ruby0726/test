@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      const a = [1,2,3],
+      b = [1,2,3],
+      c = [1,2,4],
+      d = '2',
+      e = '11'
+      console.log([a==b,a===b,a>c,a<c,d>e])  
+
+
+      //false false false true true  
+      //1、2、对象之间== 也是判断内存地址  3、4、 对象比较大小，会先toString然后转成ascii码再进行比较  5、字符串大小比较会先转成ascii码，根据编码大小比较
+    </script>
+  </head>
+</html>

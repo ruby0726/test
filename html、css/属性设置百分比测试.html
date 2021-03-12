@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">height 100%</div>
+</body>
+</html>
+<style>
+  body,
+  div {
+    margin: 0;
+    padding:0;
+  }
+
+  .box {
+    /* 绝对定位参照的是一个视口的高度 */
+    /* 此时body的高度为0,因为div已经脱离文档流了不会撑开父元素 */
+    position:absolute;
+    width: 100px;
+    height: 50%;
+    background-color: #58d3e2;
+  }
+</style>

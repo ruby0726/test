@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>promise</title>
+  </head>
+  <body>
+    <div>111</div>
+  </body>
+</html>
+<script>
+  // es5的语法 promise是个构造函数
+  var promise = new Promise(function(resolve,reject) {
+    var flag = Math.random();
+    setTimeout(function(){
+      if(flag) {
+        // 将promise的状态从pending(等待)转换为resolved(已解决)
+        resolve('success')
+      } else {
+        // 将promise的状态从pending(等待)转换为resolved(已失败)
+        reject('fail')
+      }
+    },1000)
+  })
+  console.log(promise);
+
+// 一秒后这里输出的可能是success也可能是fail
+  promise.then(function(result){
+    console.log(result);
+  },function(err) {
+    console.log(err)
+  })
+</script>

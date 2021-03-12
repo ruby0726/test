@@ -1,0 +1,41 @@
+<html>
+  <div>
+    <p>请输入一个5到10之间的数字</p>
+    <input id="demo" type="text">
+    <button type="button" onclick="myFunction()"></button>
+    <p id="mess"></p>
+  </div>
+</html>
+<script>
+  /**
+  try 测试代码块的错误。
+
+  catch 语句处理错误。
+
+  throw 创建并跑出错误。
+
+
+   try
+   {
+   //在这里运行代码
+     throw抛出错误
+   }
+    catch(err)
+   {
+   //在这里处理错误
+   }
+  */
+  function myFunction() {
+    try{
+      var x= document.getElementById('demo').value;
+      if(x=== '') throw '值为空'
+      if(isNaN(x)) throw '不是数字'
+      if(x>10) throw '太大'
+      if(x<5) throw '太小'
+    }
+    catch(err) {
+      var y=document.getElementById('mess');
+      y.innerHTML = "错误:"+err+"。"
+    }
+  }
+</script>

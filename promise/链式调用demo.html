@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+</html>
+<script>
+  function badAsyncCall(data) {
+      var promise = Promise.resolve(data);
+      promise.then(function (value) {
+        return value + 1;
+      });
+      return promise;
+    }
+    badAsyncCall(10).then(function (value) {
+      console.log(value);          //想要得到11，实际输出10
+    });
+</script>

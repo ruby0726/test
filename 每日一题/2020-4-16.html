@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      const value = {number:10};
+      const multiply = (x={...value})=>{
+        console.log(x.number *=2);
+      }
+      // multiply();
+      // multiply();
+      multiply(value);  //20
+      console.log(value.number) //20
+      // multiply(value);
+
+      const z = {number:1}
+      const u = {...z};
+      u.number = 2;
+      console.log(z.number)   //1
+
+      let aa = {
+          age: 18,
+          name: 'aaa',
+          address: {
+            city: 'shanghai'
+          }
+        }
+
+        let bb = { ...aa };
+        bb.address.city = 'shenzhen';
+        bb.age = 22
+
+        console.log(aa.address.city);  // shenzhen
+        console.log(aa.age);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /*
+      答案：
+
+20 20 20 40
+
+解析:
+
+1.在ES6中，我们可以使用默认值初始化参数。如果没有给函数传参，或者传的参值为undefined，那么参数的值将是默认值。2.本题中，我们将value对象进行了解构并传到一个新对象中，因此x的默认值为{number：10}
+3.默认参数在调用时才会进行计算，每次调用函数时，都会创建一个新的对象。我们前两次调用multiply函数且不传递值，那么每一次x的默认值都为{number：10}，因此打印出该数字的乘积值为20。
+4.第三次调用multiply时，我们传递了一个参数，即对象value，*=运算符实际上是x.number=x.number*2的简写，我们修改了x.number的值，并打印出值20。
+5.第四次，我们再次传递value对象。x.number之前被修改为20，所以x.number*=2打印为40。
+      */
+    </script>
+  </head>
+</html>

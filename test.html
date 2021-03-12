@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 设备像素指的是物理像素，一般手机的分辨率指的就是设备像素，一个设备的设备像素是不可变的。css像素喝设备独立像素是等价的，不管在何种分辨率的设备上，css像素的大小都应该是一致的，
+  css像素是一个相对单位，它是相对于设备像素的，一个css像素的大小取决于页面缩放程度喝dpr的大小 -->
+  <div class="div">
+    <div class="one">1</div>
+    <div class="two">2</div>
+  </div>
+
+</body>
+</html>
+<style>
+  .div {
+    height: 100%; padding: 100px 0 0; box-sizing: border-box
+    /* display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: 100px auto; */
+
+    /* 
+    display: flex;
+    flex-direction: column; */
+
+    height: 100%;
+  }
+  .one {
+    background-color: pink;
+    margin-top: -100px;
+    height: 100px;
+    /* height: 100px; */
+  }
+  .two {
+    background-color: powderblue;
+    height: 100%;
+    /* flex-grow: 1; */
+  }
+</style>

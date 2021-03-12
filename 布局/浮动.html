@@ -1,0 +1,29 @@
+<html>
+  <div class="outer over-flow">
+    <div class="div1">1</div>
+    <div class="div2">2</div>
+    <div class="div3">3</div>
+    <div class="div1">1</div>
+    <div class="div1">1</div>
+    <!-- <div class="clear"></div> -->
+  </div>
+</html>
+
+<style>
+  .outer {
+    border:1px solid #ccc;
+    background-color: #fc9;
+    color:#fff;
+    margin:50px auto;
+    padding:50px;
+  }
+  .div1{width: 80px;height: 80px;background: red;} 
+  .div2{width: 80px;height: 80px;background: blue;float: left;} 
+  .div3{width: 80px;height: 80px;background: sienna;float: left;}
+  .clear{clear:both; height: 0; line-height: 0; font-size: 0}
+  .over-flow{ 
+    /* auto,hidden都可以清楚浮动。zoom: 1; 是在处理兼容性问题  */
+    overflow: auto; 
+    zoom: 1; 
+    }
+</style>

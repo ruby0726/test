@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <script>
+    // 通过Object.prototype.toString.call(xxx) 可以判断一个目标的属性
+    // Object 会返回 [Function Object]
+    // Array 会返回 [Function Array]
+
+    const checkedType = (target)=>{
+      return Object.prototype.toString.call(target).slice(8,-1)
+    }
+    // 浅拷贝
+    const shallowClone = (target)=> {
+      // 设置结果
+      let result
+      // 如果目标是对象，那么设置成对象
+      if(checkedType(target) === 'Object') {
+        result = {}
+      } else if(checkedType(target) === 'Array') {
+        // 如果目标是数组，那么设置成数组
+        result = []
+      }
+
+      // 通过let...in... 遍历数组或者对象
+      // 并通过hasOwnProperty 判断是否为自身的属性
+      for(let i in target) {
+        if(target.hasOwnProperty[i]) {
+          result[i] = target[i]
+        }
+      } 
+
+      // 返回拷贝结果
+      return result;
+    }
+  </script>
+</html>

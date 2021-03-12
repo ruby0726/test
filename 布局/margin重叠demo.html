@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <div class="aside"></div>
+    <!-- <div class="main"></div> -->
+    <div class="text">
+      <div class="main"></div>
+    </div>
+  </body>
+  <style>
+    .aside {
+      width: 200px;
+      height: 100px;
+      background-color: green;
+      margin-bottom: 20px;
+    }
+    .main {
+      width: 200px;
+      height: 100px;
+      background-color: hotpink;
+      margin-top: 20px;
+    }
+    .text {
+      /*盒子main的外面包一个div，通过改变此div的属性使两个盒子分属于两个不同的BFC，以此来阻止margin重叠*/
+      overflow: hidden;  
+    }
+  </style>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>数组数字大小排序</title>
+</head>
+
+<body>
+  <p>让数组按照升序降序排列</p>
+  <p>这里写个数组 var array=[1,80,4,33,21,55];</p>
+  <p>升序输出：</p>
+  <script type="text/javascript">
+    var array = [1, 80, 4, 33, 21, 55];
+    array.sort(function (x, y) {
+      return x - y;
+    });
+    document.writeln(array);
+  </script>
+  <p>解释：<br> x,y表示数组中的任意两个元素，若return > 0,则y前x后;若reutrn < 0 ,则x前y后;当x=y时存在浏览器兼容。<br>简单来说：就是，x-y是按照从小到大排序，y-x是按照从大到小排序。</p>
+  <p>顺手写个降序：</p>
+  <script type="text/javascript">
+    var array = [1, 80, 4, 33, 21, 55];
+    array.sort(function (x, y) {
+      return y - x;
+    });
+    document.writeln(array);
+  </script>
+</body>
+
+</html>
