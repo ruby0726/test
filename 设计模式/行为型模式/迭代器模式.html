@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Creater {
+            constructor(list) {
+                this.list = list
+            }
+
+            // 创建一个迭代器，也叫遍历器
+            createIterator() {
+                return new Interator(this)
+            }
+
+        }
+
+        class Iterator {
+            constructor(Creater) {
+                this.list = Creater.list
+                this.index = 0
+            }
+
+            // 判断是否遍历完数据
+            isDone() {
+                if(this.index >= this.list.length) {
+                    return true
+                }
+                return false
+            }
+
+            next() {
+                return this.list[this.index++]
+            }
+        }
+
+        var arr = [1,2,3,4]
+
+        var creater = new Creater(arr)
+        var iterator = creater.createIterator()
+        console.log(iterator.list)
+        while(!iterator.isDone) {
+            console.log(Interator.next())
+        }
+    </script>
+</body>
+</html>

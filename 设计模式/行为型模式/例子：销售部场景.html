@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 发布订阅模式例子：   销售部场景
+
+        //  先发布或者先订阅都可以
+        var Event = function () {
+            this.list = {}
+            this.cache = {}
+        }
+
+        Event.prototype.add = function (area, client) {
+            if (!this.list[area]) this.list[area] = []
+            this.list[area].push(client)
+            if(this.cache[area]) {
+                this.cache[area].forEach(price => {
+                    client.listen(area, price)
+                })
+            }
+        
+        }
+
+        Event.prototype.remove = function (area, client) {
+            if (!this.list[area]) return
+            var index = this.list[area].findIndex(item => item === client)
+            this.list[area].splice(index, 1)
+        }
+
+
+        Event.prototype.triggle = function (area, price) {
+            if (!this.cache[area]) this.cache[area] = []
+            this.cache[area].push(price)
+
+            if (!this.list[area]) return
+            this.list[area].forEach(client => {
+                client.listen(area, price)
+            })
+        }
+
+        var Client = function (name) {
+            this.name = name
+        }
+
+        Client.prototype.listen = function (area, price) {
+            console.log(`${this.name}收到${area}平的房源报价${price}`)
+        }
+
+
+        var client1 = new Client('client1')
+        var client2 = new Client('client2')
+
+
+        var event = new Event()
+        event.add('80平', client1)
+        event.add('100平', client1)
+        event.add('80平', client2)
+        event.add('300平', client1)
+        event.remove('300平', client1)
+
+        event.triggle('80平', 200) // client1收到80平平的房源报价200 client2收到80平平的房源报价200
+        event.triggle('100平', 500) // client1收到100平平的房源报价500
+        event.triggle('200平', 1000) //
+        event.triggle('300平', 1000) //
+
+        var client3 = new Client('client3')
+        event.add('80平', client3)
+        event.add('100平', client3)
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const orgTreeData = {
+  "nodeId":"19A5B",
+  "nodeName":"预分析用户：1313.85万人",
+  "nodeType":"root",
+  "expand":true,
+  "dataCnt":13138494,
+  "children":[
+    {
+      "nodeId":"19A5B_19A5C",
+      "nodeName":"客户状态",
+      "nodeType":"tag",
+      "children":[
+        {
+          "nodeId":"19A5B_19A5C_19A5E",
+          "nodeName":"包含(实名制停机,IPBUS帐户封锁停机)",
+          "dataCnt":"0人",
+          "nodeType":"domain",
+          "counted":2,
+          "children":[
+            {
+              "nodeId":"19A5B_19A5C_19A5E_19A67",
+              "nodeName":"积分",
+              "nodeType":"tag",
+              "children":[
+              ],
+              "expand":true,
+              "counted":0,
+              "condType":"1",
+              "dataType":1,
+              "propType":"1",
+              "propSql":"",
+              "labelId":"BLD00013",
+              "linked":false,
+              "linkedId":""
+            },
+            {
+              "nodeId":"19A5B_19A5C_19A5E_19A68",
+              "nodeName":"是否通信客户",
+              "nodeType":"tag",
+              "children":[
+              ],
+              "expand":true,
+              "counted":0,
+              "condType":"3",
+              "dataType":1,
+              "propType":"4",
+              "propSql":"",
+              "labelId":"BLD00010",
+              "linked":false,
+              "linkedId":""
+            }
+          ],
+          "expand":true,
+          "expressType":"7",
+          "expressValue1":[
+            "17",
+            "14"
+          ],
+          "expressValue2":"",
+          "expressValue3":"17##14",
+          "expressValue4":"实名制停机##IPBUS帐户封锁停机",
+          "expressValue5":"实名制停机,IPBUS帐户封锁停机",
+          "linked":false,
+          "linkedId":""
+        },
+        {
+          "nodeId":"19A5B_19A5C_19A60",
+          "nodeName":"包含(营业销户)",
+          "dataCnt":"0人",
+          "nodeType":"domain",
+          "counted":2,
+          "children":[
+            {
+              "nodeId":"19A5B_19A5C_19A60_19A69",
+              "nodeName":"入网归属地域",
+              "nodeType":"tag",
+              "children":[
+                {
+                  "nodeId":"19A5B_19A5C_19A60_19A69_19A6A",
+                  "nodeName":"包含(鄂尔多斯,阿盟)",
+                  "dataCnt":"",
+                  "nodeType":"domain",
+                  "counted":0,
+                  "children":[
+                  ],
+                  "expand":true,
+                  "expressType":"7",
+                  "expressValue1":[
+                    "477",
+                    "482"
+                  ],
+                  "expressValue2":"",
+                  "expressValue3":"477##482",
+                  "expressValue4":"鄂尔多斯##阿盟",
+                  "expressValue5":"鄂尔多斯,阿盟",
+                  "linked":false,
+                  "linkedId":""
+                }
+              ],
+              "expand":true,
+              "counted":0,
+              "condType":"2",
+              "dataType":1,
+              "propType":"3",
+              "propSql":"1005",
+              "labelId":"BLD00017",
+              "linked":false,
+              "linkedId":""
+            }
+          ],
+          "expand":true,
+          "expressType":"7",
+          "expressValue1":[
+            "40"
+          ],
+          "expressValue2":"",
+          "expressValue3":"40",
+          "expressValue4":"营业销户",
+          "expressValue5":"营业销户",
+          "linked":false,
+          "linkedId":""
+        }
+      ],
+      "expand":true,
+      "counted":0,
+      "condType":"2",
+      "dataType":1,
+      "propType":"3",
+      "propSql":"1002",
+      "labelId":"BLD00004",
+      "linked":false,
+      "linkedId":""
+    },
+    {
+      "nodeId":"19A5B_19A61",
+      "nodeName":"全球通级别 && 全球通级别",
+      "nodeType":"tag",
+      "children":[
+      ],
+      "expand":true,
+      "counted":0,
+      "condType":"2",
+      "dataType":1,
+      "propType":"3",
+      "propSql":"1004",
+      "labelId":"BLD00008",
+      "linked":true,
+      "linkedId":"19A5B_19A64"
+    },
+    {
+      "nodeId":"19A5B_19A62",
+      "nodeName":"同证件号码数量",
+      "nodeType":"tag",
+      "children":[
+      ],
+      "expand":true,
+      "counted":0,
+      "condType":"1",
+      "dataType":1,
+      "propType":"1",
+      "propSql":"",
+      "labelId":"BLD00009",
+      "linked":false,
+      "linkedId":""
+    }
+  ]
+}
+
+// 传入参数，需要遍历的json,需要匹配的id
+function findPnodeId(data,nodeId) {
+    // 设置结果
+    let result;
+    if(!data) {
+        return // 如果data为空，直接返回
+    }
+    for(let i=0; i<data.children.length; i++) {
+        let item = data.children[i]
+        if(item.nodeId == nodeId) {
+            // 找到id相等的则返回父id
+            result = item.nodeId
+        } else if(item.children&&item.children.length) {
+            // 如果有子集，则把子集作为参数重新执行本方法
+            result = findPnodeId(item,nodeId)
+            //关键，千万不要直接return本方法，不然即使没有返回值也会将返回return，导致最外层循环中断，直接返回undefined,要有返回值才return才对
+            if(result) {
+                return result
+            }
+        }
+    }
+    return result
+}
+    </script>
+</body>
+</html>

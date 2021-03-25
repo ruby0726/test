@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Event =  {
+            list: {},
+            // 添加
+            add(type,listener) {
+                if(!this.list[type]) {
+                    this.list[type] = []
+                }
+                this.list[type].push(listener)
+            },
+            // 触发
+            triggle(type) {
+                this.list[type] && this.list[type].forEach(listener => {
+                    listener()
+                });
+            },
+            // 取消订阅
+            remove(type,fn) {
+                if(!this.list[type]) return
+                var index = this.list[type].findIndex(listener => listener === fn)
+                this.list[type].splice(index,1)
+            }
+        }
+
+        var fn1 = ()=>{console.log('房源1--80平--200万')}
+        var fn2 = ()=>{console.log('房源2--80平--300万')}
+        var fn3 = ()=>{console.log('房源2--200平--1000万')}
+
+        Event.add('80平', fn1)
+        Event.add('80平', fn2)
+        Event.add('200平', fn3)
+
+
+        Event.remove('80平',fn2)
+        Event.triggle('80平')
+
+        
+
+    </script>
+</body>
+</html>

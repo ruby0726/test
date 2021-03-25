@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let getSingleton = function(fn) {
+            var result;
+            return function() {
+                return result || (result = fn.apply(this,arguments)) // 确定this上下文并传递参数
+            }
+        }
+        let createAlertMessage = function(html) {
+            var div = document.createElement('div')
+            div.innerHTML = html
+            div.style.display = 'none'
+            document.body.appendChild(div)
+            return div
+        }
+
+        let createSIngAlertMessage = getSingleton(createAlertMessage)
+
+        document.body.addEventListener('click',function() {
+            // 多次点击只会产生一个弹窗
+            let alertMessage = createAlertMessage('您的知识需要付费充值！')
+            alertMessage.style.display = 'block'
+        })
+    </script>
+</body>
+</html>
