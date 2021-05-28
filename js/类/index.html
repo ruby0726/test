@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Parent {
+            constructor(url) {
+                this.url = url
+            }
+            get(subUrl) {
+                console.log(this.url+subUrl)
+            }
+        }
+
+        class Child extends Parent {
+            // constructor在一个对象被new时执行。
+            constructor(url) {
+                super(url)
+            }
+            getInfo() {
+                return this.get('/info')
+            }
+        }
+
+        new Child('/api/account').getInfo()
+    </script>
+</body>
+</html>

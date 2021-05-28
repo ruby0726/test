@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pictures</a></li>
+        <li><a href="#">Summer 15</a></li>
+        <li>Italy</li>
+    </ul>
+</body>
+<style>
+    ul {
+        padding: 8px 16px;
+        list-style: none;
+        background-color: #eee;
+    }
+    ul li {
+        display: inline;
+    }
+    ul li+li::before {
+        padding: 8px;
+        color: black;
+        content: '/\00a0'
+    }
+    ul li a {
+        color: green;
+    }
+</style>
+</html>

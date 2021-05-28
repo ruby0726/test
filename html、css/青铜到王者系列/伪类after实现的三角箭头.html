@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class='container'>
+        <img alt='' src='http://placehold.it/400x200'>
+        <div class='arrow-left'></div>
+    </div>
+    <div class='container new'>
+        <div class='arrow-right'></div>
+        <img alt='' src='http://placehold.it/400x200'>
+    </div>
+    
+</body>
+    <style>
+        .arrow-left:before {
+            z-index: 9999;
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-right: 20px solid #E9E9E9;
+            position: absolute;
+            left: -20px;
+            top: 80px;
+        }
+
+
+    </style>
+</html>
